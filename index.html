@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - Emulador Huawei eNSP para VirtualBox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .lgpd-notice {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .lgpd-notice strong {
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .checkbox-group {
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 2px;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 13px;
+            color: #555;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .download-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📥 Download Emulador Huawei eNSP</h1>
+            <p>Versão para VirtualBox - Grátis</p>
+        </div>
+        
+        <div class="content">
+            <form id="cadastroForm">
+                <div class="form-group">
+                    <label for="nome" class="required">Nome completo</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="required">E-mail</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="empresa" class="required">Empresa</label>
+                    <input type="text" id="empresa" name="empresa" required placeholder="Nome da empresa onde trabalha">
+                </div>
+
+                <div class="form-group">
+                    <label for="cargo" class="required">Cargo</label>
+                    <input type="text" id="cargo" name="cargo" required placeholder="Seu cargo/função">
+                </div>
+
+                <div class="lgpd-notice">
+                    <strong>🔒 LGPD - Aviso de Privacidade</strong>
+                    Os dados informados neste formulário serão utilizados exclusivamente para:
+                    <ul style="margin-top: 8px; margin-left: 20px;">
+                        <li>Disponibilizar o download do emulador Huawei eNSP</li>
+                        <li>Enviar informações sobre cursos, treinamentos e eventos relacionados a redes e telecomunicações</li>
+                        <li>Estatísticas internas e melhorias nos serviços oferecidos</li>
+                    </ul>
+                    <br>
+                    Ao prosseguir, você concorda com o tratamento dos seus dados conforme descrito acima. Você pode solicitar a remoção dos seus dados a qualquer momento através do e-mail de contato. Seus dados não serão compartilhados com terceiros.
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consentimento" required>
+                    <label for="consentimento">
+                        Eu li e concordo com o aviso de privacidade acima e autorizo o uso dos meus dados para a divulgação de cursos, treinamentos e eventos relacionados. (Campos obrigatório)
+                    </label>
+                </div>
+
+                <button type="submit">Cadastrar e iniciar download</button>
+            </form>
+
+            <div id="message" class="message"></div>
+            <div class="download-info">
+                ⚡ ISO compatível com VirtualBox | Tamanho aproximado: 4.65GB
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ⚠️ IMPORTANTE: Substitua este ID pelo ID real da sua pasta/arquivo no Google Drive
+        // Para arquivo: https://drive.google.com/file/d/SEU_ID_DE_ARQUIVO/view
+        // Para pasta: https://drive.google.com/drive/folders/SEU_ID_DA_PASTA
+        
+        const GOOGLE_DRIVE_FILE_ID = 'SEU_ID_DO_ARQUIVO_AQUI'; 
+        // Exemplo: '1ABC123xyz456...'
+        
+        // URL de download direto do Google Drive
+        const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${GOOGLE_DRIVE_FILE_ID}`;
+        
+        // Armazenamento local para controle (simulando banco de dados)
+        function salvarDadosLocal(dados) {
+            // Recupera registros existentes
+            let registros = localStorage.getItem('ensp_downloads');
+            registros = registros ? JSON.parse(registros) : [];
+            
+            // Adiciona novo registro com timestamp
+            dados.timestamp = new Date().toISOString();
+            dados.ip = 'registrado_no_servidor'; // Nota: IP real só seria obtido no backend
+            registros.push(dados);
+            
+            // Salva de volta
+            localStorage.setItem('ensp_downloads', JSON.stringify(registros));
+            
+            // Opcional: Enviar para um webhook ou serviço externo para coletar os dados
+            enviarParaWebhook(dados);
+        }
+        
+        // Função para enviar dados para um webhook (ex: Integração com Google Sheets, Zapier, n8n)
+        function enviarParaWebhook(dados) {
+            // Se você tiver um webhook URL (Google Apps Script, Make, etc), configure aqui
+            const WEBHOOK_URL = ''; // Opcional: coloque sua URL do webhook
+            
+            if (WEBHOOK_URL) {
+                fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Se não precisar de resposta
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                }).catch(erro => console.log('Webhook não configurado ou erro:', erro));
+            }
+        }
+        
+        // Validar e processar formulário
+        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coletar dados
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const empresa = document.getElementById('empresa').value.trim();
+            const cargo = document.getElementById('cargo').value.trim();
+            const consentimento = document.getElementById('consentimento').checked;
+            
+            // Validações
+            if (!nome || !email || !empresa || !cargo) {
+                mostrarMensagem('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            if (!validarEmail(email)) {
+                mostrarMensagem('Por favor, insira um e-mail válido.', 'error');
+                return;
+            }
+            
+            if (!consentimento) {
+                mostrarMensagem('Você precisa aceitar o aviso de privacidade (LGPD) para prosseguir.', 'error');
+                return;
+            }
+            
+            // Salvar dados
+            const dadosUsuario = {
+                nome: nome,
+                email: email,
+                empresa: empresa,
+                cargo: cargo,
+                consentimento: consentimento
+            };
+            
+            try {
+                salvarDadosLocal(dadosUsuario);
+                
+                // Mostrar mensagem de sucesso
+                mostrarMensagem('✅ Cadastro realizado com sucesso! Iniciando download...', 'success');
+                
+                // Verificar se o ID do Google Drive foi configurado
+                if (GOOGLE_DRIVE_FILE_ID === 'SEU_ID_DO_ARQUIVO_AQUI') {
+                    mostrarMensagem('⚠️ ATENÇÃO: O ID do arquivo no Google Drive não foi configurado. Substitua "SEU_ID_DO_ARQUIVO_AQUI" no código pelo ID correto do seu arquivo.', 'error');
+                    return;
+                }
+                
+                // Iniciar download após 1 segundo
+                setTimeout(() => {
+                    iniciarDownload();
+                }, 1000);
+                
+                // Limpar formulário (opcional)
+                // this.reset();
+                
+            } catch (erro) {
+                mostrarMensagem('Erro ao processar cadastro. Tente novamente.', 'error');
+                console.error('Erro:', erro);
+            }
+        });
+        
+        function validarEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function mostrarMensagem(texto, tipo) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = texto;
+            messageDiv.className = `message ${tipo}`;
+            
+            // Esconder mensagem após 5 segundos (exceto se for erro de configuração)
+            if (tipo !== 'error' || texto.includes('ATENÇÃO')) {
+                setTimeout(() => {
+                    if (messageDiv.className.includes(tipo)) {
+                        messageDiv.style.display = 'none';
+                        messageDiv.className = 'message';
+                    }
+                }, 5000);
+            }
+        }
+        
+        function iniciarDownload() {
+            // Criar link temporário para download
+            const link = document.createElement('a');
+            link.href = DOWNLOAD_URL;
+            link.download = ''; // Deixa o navegador decidir o nome
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Mensagem adicional
+            const messageDiv = document.getElementById('message');
+            if (!messageDiv.textContent.includes('ATENÇÃO')) {
+                setTimeout(() => {
+                    mostrarMensagem('📦 O download deve começar em instantes. Se não iniciar, verifique seu bloqueador de pop-ups.', 'success');
+                }, 2000);
+            }
+        }
+        
+        // Adicionar máscara ou feedback visual nos campos
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+        
+        // Instrução no console para o desenvolvedor
+        console.log('%c📋 Configuração necessária:', 'color: #764ba2; font-size: 14px; font-weight: bold;');
+        console.log('1. Substitua "SEU_ID_DO_ARQUIVO_AQUI" pelo ID real do seu arquivo no Google Drive');
+        console.log('2. Para coletar os dados em uma planilha, configure um webhook (Google Apps Script, etc.)');
+        console.log('3. Os dados estão sendo salvos no localStorage do navegador para demonstração');
+    </script>
+</body>
+</html>
