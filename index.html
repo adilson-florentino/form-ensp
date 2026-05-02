@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download - Emulador Huawei eNSP para VirtualBox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Download - Huawei eNSP Emulator para VirtualBox</title>
     <style>
         * {
             margin: 0;
@@ -26,7 +26,7 @@
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
             animation: fadeIn 0.5s ease-in;
         }
@@ -45,7 +45,7 @@
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
+            padding: 30px 20px;
             text-align: center;
         }
 
@@ -82,10 +82,10 @@
 
         input, select {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 15px;
             transition: all 0.3s;
             font-family: inherit;
         }
@@ -103,7 +103,7 @@
             margin: 20px 0;
             border-radius: 8px;
             font-size: 12px;
-            color: #666;
+            color: #555;
             line-height: 1.5;
         }
 
@@ -113,16 +113,23 @@
             margin-bottom: 8px;
         }
 
+        .lgpd-notice ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
         .checkbox-group {
             margin: 20px 0;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
         }
 
         .checkbox-group input {
-            width: auto;
+            width: 18px;
+            height: 18px;
             margin-top: 2px;
+            flex-shrink: 0;
         }
 
         .checkbox-group label {
@@ -130,6 +137,7 @@
             font-weight: normal;
             font-size: 13px;
             color: #555;
+            line-height: 1.4;
         }
 
         button {
@@ -138,7 +146,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -154,10 +162,16 @@
             transform: translateY(0);
         }
 
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .message {
             margin-top: 20px;
             padding: 12px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: none;
             font-size: 14px;
             text-align: center;
@@ -177,11 +191,35 @@
             display: block;
         }
 
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+
         .download-info {
             text-align: center;
             margin-top: 20px;
             font-size: 12px;
             color: #999;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @media (max-width: 480px) {
@@ -192,42 +230,46 @@
             .header {
                 padding: 20px;
             }
+
+            .header h1 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📥 Download Emulador Huawei eNSP</h1>
-            <p>Versão para VirtualBox - Grátis</p>
+            <h1>📥 Download Huawei eNSP</h1>
+            <p>Emulador para VirtualBox - Grátis</p>
         </div>
         
         <div class="content">
             <form id="cadastroForm">
                 <div class="form-group">
                     <label for="nome" class="required">Nome completo</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo" autocomplete="name">
                 </div>
 
                 <div class="form-group">
                     <label for="email" class="required">E-mail</label>
-                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email">
                 </div>
 
                 <div class="form-group">
                     <label for="empresa" class="required">Empresa</label>
-                    <input type="text" id="empresa" name="empresa" required placeholder="Nome da empresa onde trabalha">
+                    <input type="text" id="empresa" name="empresa" required placeholder="Nome da empresa onde trabalha" autocomplete="organization">
                 </div>
 
                 <div class="form-group">
                     <label for="cargo" class="required">Cargo</label>
-                    <input type="text" id="cargo" name="cargo" required placeholder="Seu cargo/função">
+                    <input type="text" id="cargo" name="cargo" required placeholder="Seu cargo/função" autocomplete="organization-title">
                 </div>
 
                 <div class="lgpd-notice">
                     <strong>🔒 LGPD - Aviso de Privacidade</strong>
                     Os dados informados neste formulário serão utilizados exclusivamente para:
-                    <ul style="margin-top: 8px; margin-left: 20px;">
+                    <ul>
                         <li>Disponibilizar o download do emulador Huawei eNSP</li>
                         <li>Enviar informações sobre cursos, treinamentos e eventos relacionados a redes e telecomunicações</li>
                         <li>Estatísticas internas e melhorias nos serviços oferecidos</li>
@@ -239,71 +281,132 @@
                 <div class="checkbox-group">
                     <input type="checkbox" id="consentimento" required>
                     <label for="consentimento">
-                        Eu li e concordo com o aviso de privacidade acima e autorizo o uso dos meus dados para a divulgação de cursos, treinamentos e eventos relacionados. (Campos obrigatório)
+                        Eu li e concordo com o aviso de privacidade acima e autorizo o uso dos meus dados para a divulgação de cursos, treinamentos e eventos relacionados.
                     </label>
                 </div>
 
-                <button type="submit">Cadastrar e iniciar download</button>
+                <button type="submit" id="btnSubmit">
+                    📥 Cadastrar e iniciar download
+                </button>
             </form>
 
             <div id="message" class="message"></div>
             <div class="download-info">
-                ⚡ ISO compatível com VirtualBox | Tamanho aproximado: 4.65GB
+                ⚡ ISO compatível com VirtualBox | Tamanho: 1.2GB
             </div>
         </div>
     </div>
 
     <script>
-        // ⚠️ IMPORTANTE: Substitua este ID pelo ID real da sua pasta/arquivo no Google Drive
-        // Para arquivo: https://drive.google.com/file/d/SEU_ID_DE_ARQUIVO/view
-        // Para pasta: https://drive.google.com/drive/folders/SEU_ID_DA_PASTA
+        // ============================================
+        // CONFIGURAÇÕES - ATUALIZE AQUI!
+        // ============================================
         
-        const GOOGLE_DRIVE_FILE_ID = 'https://drive.google.com/file/d/1uuwQlc8-kFiXSovNb_Sgaq3XjEJ0t4vz/view?usp=sharing'; 
-        // Exemplo: '1ABC123xyz456...'
-        
-        // URL de download direto do Google Drive
+        // 1️⃣ URL DO GOOGLE DRIVE (seu arquivo ISO)
+        const GOOGLE_DRIVE_FILE_ID = '1uuwQlc8-kFiXSovNb_Sgaq3XjEJ0t4vz';
         const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${GOOGLE_DRIVE_FILE_ID}`;
         
-        // Armazenamento local para controle (simulando banco de dados)
-        function salvarDadosLocal(dados) {
-            // Recupera registros existentes
-            let registros = localStorage.getItem('ensp_downloads');
-            registros = registros ? JSON.parse(registros) : [];
-            
-            // Adiciona novo registro com timestamp
-            dados.timestamp = new Date().toISOString();
-            dados.ip = 'registrado_no_servidor'; // Nota: IP real só seria obtido no backend
-            registros.push(dados);
-            
-            // Salva de volta
-            localStorage.setItem('ensp_downloads', JSON.stringify(registros));
-            
-            // Opcional: Enviar para um webhook ou serviço externo para coletar os dados
-            enviarParaWebhook(dados);
+        // 2️⃣ URL DO GOOGLE APPS SCRIPT (IMPORTANTE: cole a URL gerada na implantação)
+        //    ⚠️ VOCÊ PRECISA SUBSTITUIR ESTA URL PELA QUE O GOOGLE APPS SCRIPT GERAR!
+        const WEBHOOK_URL = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
+        //    👆 Depois de implantar o script, cole a URL completa entre as aspas
+        
+        // ============================================
+        // FUNÇÕES DO FORMULÁRIO
+        // ============================================
+        
+        // Capturar IP do usuário (via API pública)
+        async function getIpAddress() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.log('Não foi possível capturar IP:', error);
+                return 'Não disponível';
+            }
         }
         
-        // Função para enviar dados para um webhook (ex: Integração com Google Sheets, Zapier, n8n)
-        function enviarParaWebhook(dados) {
-            // Se você tiver um webhook URL (Google Apps Script, Make, etc), configure aqui
-            const WEBHOOK_URL = ''; // Opcional: coloque sua URL do webhook
+        // Enviar dados para o Google Apps Script
+        async function enviarParaWebhook(dados) {
+            if (!WEBHOOK_URL || WEBHOOK_URL === 'SUA_URL_DO_APPS_SCRIPT_AQUI') {
+                console.warn('Webhook não configurado');
+                return { success: false, message: 'Webhook não configurado. Configure a URL do Google Apps Script.' };
+            }
             
-            if (WEBHOOK_URL) {
-                fetch(WEBHOOK_URL, {
+            try {
+                const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Se não precisar de resposta
+                    mode: 'cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(dados)
-                }).catch(erro => console.log('Webhook não configurado ou erro:', erro));
+                });
+                
+                const resultado = await response.json();
+                return resultado;
+                
+            } catch (erro) {
+                console.error('Erro no webhook:', erro);
+                return { success: false, message: erro.message };
             }
         }
         
-        // Validar e processar formulário
-        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+        // Salvar dados localmente (fallback)
+        function salvarDadosLocal(dados) {
+            let registros = localStorage.getItem('ensp_downloads');
+            registros = registros ? JSON.parse(registros) : [];
+            dados.timestamp = new Date().toISOString();
+            registros.push(dados);
+            localStorage.setItem('ensp_downloads', JSON.stringify(registros));
+        }
+        
+        // Mostrar mensagem na tela
+        function mostrarMensagem(texto, tipo) {
+            const messageDiv = document.getElementById('message');
+            const btnSubmit = document.getElementById('btnSubmit');
+            
+            messageDiv.textContent = texto;
+            messageDiv.className = `message ${tipo}`;
+            
+            // Se for erro, reabilitar botão
+            if (tipo === 'error') {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = '📥 Cadastrar e iniciar download';
+            }
+            
+            // Esconder mensagem após 5 segundos
+            setTimeout(() => {
+                if (messageDiv.className.includes(tipo)) {
+                    messageDiv.style.display = 'none';
+                    messageDiv.className = 'message';
+                }
+            }, 8000);
+        }
+        
+        // Iniciar o download
+        function iniciarDownload() {
+            const link = document.createElement('a');
+            link.href = DOWNLOAD_URL;
+            link.download = '';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Validação de e-mail
+        function validarEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // Evento principal do formulário
+        document.getElementById('cadastroForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Coletar dados
+            // Elementos
+            const btnSubmit = document.getElementById('btnSubmit');
             const nome = document.getElementById('nome').value.trim();
             const email = document.getElementById('email').value.trim();
             const empresa = document.getElementById('empresa').value.trim();
@@ -312,110 +415,94 @@
             
             // Validações
             if (!nome || !email || !empresa || !cargo) {
-                mostrarMensagem('Por favor, preencha todos os campos obrigatórios.', 'error');
+                mostrarMensagem('❌ Por favor, preencha todos os campos obrigatórios.', 'error');
                 return;
             }
             
             if (!validarEmail(email)) {
-                mostrarMensagem('Por favor, insira um e-mail válido.', 'error');
+                mostrarMensagem('❌ Por favor, insira um e-mail válido.', 'error');
                 return;
             }
             
             if (!consentimento) {
-                mostrarMensagem('Você precisa aceitar o aviso de privacidade (LGPD) para prosseguir.', 'error');
+                mostrarMensagem('❌ Você precisa aceitar o aviso de privacidade (LGPD) para prosseguir.', 'error');
                 return;
             }
             
-            // Salvar dados
+            // Desabilitar botão e mostrar loading
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="loading"></span> Enviando cadastro...';
+            
+            // Capturar IP do usuário
+            const ip = await getIpAddress();
+            
+            // Montar dados
             const dadosUsuario = {
                 nome: nome,
                 email: email,
                 empresa: empresa,
                 cargo: cargo,
-                consentimento: consentimento
+                consentimento: consentimento,
+                ip: ip,
+                userAgent: navigator.userAgent,
+                dataEnvio: new Date().toISOString()
             };
             
             try {
-                salvarDadosLocal(dadosUsuario);
+                // Tentar enviar para o Google Apps Script
+                let resultado;
                 
-                // Mostrar mensagem de sucesso
-                mostrarMensagem('✅ Cadastro realizado com sucesso! Iniciando download...', 'success');
-                
-                // Verificar se o ID do Google Drive foi configurado
-                if (GOOGLE_DRIVE_FILE_ID === 'SEU_ID_DO_ARQUIVO_AQUI') {
-                    mostrarMensagem('⚠️ ATENÇÃO: O ID do arquivo no Google Drive não foi configurado. Substitua "SEU_ID_DO_ARQUIVO_AQUI" no código pelo ID correto do seu arquivo.', 'error');
-                    return;
+                if (WEBHOOK_URL && WEBHOOK_URL !== 'SUA_URL_DO_APPS_SCRIPT_AQUI') {
+                    resultado = await enviarParaWebhook(dadosUsuario);
+                    
+                    if (resultado && resultado.success) {
+                        // Sucesso no webhook
+                        salvarDadosLocal(dadosUsuario);
+                        mostrarMensagem('✅ Cadastro realizado com sucesso! Iniciando download...', 'success');
+                        setTimeout(() => iniciarDownload(), 1500);
+                    } else {
+                        // Erro no webhook - fallback para localStorage
+                        salvarDadosLocal(dadosUsuario);
+                        mostrarMensagem('⚠️ Dados salvos localmente. Download iniciando...', 'info');
+                        setTimeout(() => iniciarDownload(), 1500);
+                    }
+                } else {
+                    // Sem webhook configurado - salvar localmente
+                    salvarDadosLocal(dadosUsuario);
+                    mostrarMensagem('✅ Cadastro local realizado! Iniciando download...', 'success');
+                    setTimeout(() => iniciarDownload(), 1500);
                 }
                 
-                // Iniciar download após 1 segundo
-                setTimeout(() => {
-                    iniciarDownload();
-                }, 1000);
-                
-                // Limpar formulário (opcional)
-                // this.reset();
+                // Limpar formulário
+                document.getElementById('cadastroForm').reset();
                 
             } catch (erro) {
-                mostrarMensagem('Erro ao processar cadastro. Tente novamente.', 'error');
                 console.error('Erro:', erro);
-            }
-        });
-        
-        function validarEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-        
-        function mostrarMensagem(texto, tipo) {
-            const messageDiv = document.getElementById('message');
-            messageDiv.textContent = texto;
-            messageDiv.className = `message ${tipo}`;
-            
-            // Esconder mensagem após 5 segundos (exceto se for erro de configuração)
-            if (tipo !== 'error' || texto.includes('ATENÇÃO')) {
+                mostrarMensagem('⚠️ Erro ao processar. Download liberado mesmo assim.', 'info');
+                setTimeout(() => iniciarDownload(), 1500);
+            } finally {
+                // Reabilitar botão após 3 segundos (caso de erro)
                 setTimeout(() => {
-                    if (messageDiv.className.includes(tipo)) {
-                        messageDiv.style.display = 'none';
-                        messageDiv.className = 'message';
+                    if (btnSubmit.disabled) {
+                        btnSubmit.disabled = false;
+                        btnSubmit.innerHTML = '📥 Cadastrar e iniciar download';
                     }
-                }, 5000);
+                }, 3000);
             }
-        }
-        
-        function iniciarDownload() {
-            // Criar link temporário para download
-            const link = document.createElement('a');
-            link.href = DOWNLOAD_URL;
-            link.download = ''; // Deixa o navegador decidir o nome
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Mensagem adicional
-            const messageDiv = document.getElementById('message');
-            if (!messageDiv.textContent.includes('ATENÇÃO')) {
-                setTimeout(() => {
-                    mostrarMensagem('📦 O download deve começar em instantes. Se não iniciar, verifique seu bloqueador de pop-ups.', 'success');
-                }, 2000);
-            }
-        }
-        
-        // Adicionar máscara ou feedback visual nos campos
-        const inputs = document.querySelectorAll('input, select');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-            input.addEventListener('blur', function() {
-                this.parentElement.classList.remove('focused');
-            });
         });
         
-        // Instrução no console para o desenvolvedor
-        console.log('%c📋 Configuração necessária:', 'color: #764ba2; font-size: 14px; font-weight: bold;');
-        console.log('1. Substitua "SEU_ID_DO_ARQUIVO_AQUI" pelo ID real do seu arquivo no Google Drive');
-        console.log('2. Para coletar os dados em uma planilha, configure um webhook (Google Apps Script, etc.)');
-        console.log('3. Os dados estão sendo salvos no localStorage do navegador para demonstração');
+        // Mensagem no console para ajudar na configuração
+        console.log('%c📋 Configuração do Formulário eNSP', 'color: #764ba2; font-size: 14px; font-weight: bold;');
+        console.log('✅ Link do Google Drive configurado:', DOWNLOAD_URL);
+        
+        if (WEBHOOK_URL === 'https://script.google.com/macros/s/AKfycbx81757g4kHYlo40tqs6fLEPeSqXSiUBGJAnN-21S2RkDf8LOb7vcrCSCK1MNyLREO-/exec') {
+            console.warn('⚠️ ATENÇÃO: Configure a URL do Google Apps Script!');
+            console.log('1. Acesse: https://script.google.com/home/projects/1s3CTpUr2V4xLMwqR-U0Ld-Fpfp3gd9Q4lQlkCuQTibSmERZ3UKV_KPgD/edit');
+            console.log('2. Clique em "Implantar" → "Nova implantação" → "Aplicativo Web"');
+            console.log('3. Copie a URL gerada e cole no código onde está SUA_URL_DO_APPS_SCRIPT_AQUI');
+        } else {
+            console.log('✅ Webhook configurado:', WEBHOOK_URL);
+        }
     </script>
 </body>
 </html>
